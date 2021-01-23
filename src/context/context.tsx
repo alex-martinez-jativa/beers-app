@@ -35,7 +35,7 @@ const beerReducer = (state: IInitialState, action: any) : IInitialState => {
             return {
                 ...state,
                 loading: false,
-                beers: action.payload,
+                beers: state.beers.concat(action.payload),
             }
         case type.GET_BEERS_ERROR:
             return {
@@ -51,17 +51,16 @@ const beerReducer = (state: IInitialState, action: any) : IInitialState => {
 export const BeerContext = React.createContext([{}, () => { }]);
 
 const BeerProvider = ({ children } : IProviderProps) => { 
-  // const [state, setTodos] = React.useState<IBeer[]>([]);
   const [state, dispatch] = React.useReducer(beerReducer, initialState);
 
-  const getBeersAction = () => {
+  const getBeersAction = (page: number) => {
     try {
         (async() => {
-            const response = await getBeersService();
+            const response = await getBeersService(page);
             dispatch({
-            type: type.GET_BEERS_SUCCESS,
-            payload: response,
-        })
+                type: type.GET_BEERS_SUCCESS,
+                payload: response,
+            })
         })()
         
     }catch(err) {
