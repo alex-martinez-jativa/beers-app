@@ -1,0 +1,9 @@
+export const GET_BEERS_SUCCESS: string = 'GET_BEERS_SUCCESS';
+export const GET_BEERS_REQUEST: string = 'GET_BEERS_REQUEST';
+export const GET_BEERS_ERROR: string = 'GET_BEERS_ERROR';
+
+export enum BeersAactionTypes {
+    GET_BEERS_REQUEST = 'GET_BEERS_SUCCESS',
+    GET_BEERS_SUCCESS = 'GET_BEERS_SUCCESS',
+    GET_BEERS_ERROR = 'GET_BEERS_ERROR',
+}
