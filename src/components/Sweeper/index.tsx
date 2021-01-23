@@ -12,7 +12,7 @@ const Sweeper: React.FC = () => {
 
     React.useEffect(() => {
         getBeersAction(page);
-    },[])
+    },[page])
 
     const handleObserver = (entities: any) => {
         const target = entities[0];
@@ -34,10 +34,7 @@ const Sweeper: React.FC = () => {
 
     },[])
 
-    React.useEffect(() => {
-        getBeersAction(page);
-    },[page])
-    
+
     return (
         
         <div className="slider">
