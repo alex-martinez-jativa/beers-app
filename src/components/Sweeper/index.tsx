@@ -34,10 +34,19 @@ const Sweeper: React.FC = () => {
 
     },[])
 
+    const SkeletonComponent = () => {
+        return(
+            <div className="slider__content">
+                <span className="skeleton__image"></span>
+                <span className="slider__name"></span>
+            </div>
+        )
+    }
 
     return (
         
         <div className="slider">
+            
             {state.beers && state.beers.map((element: IBeer, index: number) => {
                 return(
                     <React.Fragment key={`${element.id}+${index}`}>
@@ -48,6 +57,7 @@ const Sweeper: React.FC = () => {
                     </React.Fragment>
                 );
             })}
+            {state.loading && [1,2,3,4].map((item, i) => <SkeletonComponent key={i} />)}
             <div className="loading" ref={loader}>
                 <h2>Load More</h2>
             </div>

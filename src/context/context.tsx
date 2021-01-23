@@ -56,11 +56,14 @@ const BeerProvider = ({ children } : IProviderProps) => {
   const getBeersAction = (page: number) => {
     try {
         (async() => {
+            dispatch({
+                type: type.GET_BEERS_REQUEST
+            });
             const response = await getBeersService(page);
             dispatch({
                 type: type.GET_BEERS_SUCCESS,
                 payload: response,
-            })
+            });
         })()
         
     }catch(err) {

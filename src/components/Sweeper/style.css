@@ -30,6 +30,17 @@
         text-overflow: ellipsis;
         font-weight: bold;
     }
+    .skeleton__image {
+        min-width: 5rem;
+        height: 5rem;
+        object-fit: contain;
+        scroll-snap-align: center;
+        background-color: #eeeeee;
+        border: 2px solid #ffc107;
+        margin: 0 0.5rem 0 0.5rem;
+        border-radius: 1rem;
+        padding: 0.5rem;
+    }
     .loading {
         visibility: hidden;
     }
