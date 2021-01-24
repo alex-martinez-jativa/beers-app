@@ -46,4 +46,19 @@
     }
 }
 
+.arrows {
+    display: flex;
+    justify-content: flex-end;
+    color: #ffc107;
+    &__left {
+        padding: 0 0.5rem;
+        cursor: pointer;
+        font-size: 1.5rem;
+    }
+    &__right {
+        cursor: pointer;
+        font-size: 1.5rem;
+        padding: 0 0.5rem;
+    }
+}
 

@@ -9,6 +9,7 @@ const Sweeper: React.FC = () => {
     const [state, getBeersAction] = React.useContext<IInitialState | any>(BeerContext);
     const [page, setPage] = React.useState<number>(1);
     const loader = React.useRef<HTMLDivElement>(null);
+    const sliderRow = React.useRef<HTMLDivElement | any>(null);
 
     React.useEffect(() => {
         getBeersAction(page);
@@ -34,6 +35,20 @@ const Sweeper: React.FC = () => {
 
     },[])
 
+    const scrollLeft = (e: React.MouseEvent<HTMLSpanElement>) => {
+        e.preventDefault();
+        sliderRow.current.scrollLeft -= sliderRow.current.offsetWidth
+    }
+
+    const scrollRight = (e: React.MouseEvent<HTMLSpanElement>) => {
+        e.preventDefault();
+        sliderRow.current.scrollLeft += sliderRow.current.offsetWidth
+    }
+
+    const LeftArrow = () => '<'
+    const RightArrow = () => '>'
+    
+
     const SkeletonComponent = () => {
         return(
             <div className="slider__content">
@@ -43,9 +58,12 @@ const Sweeper: React.FC = () => {
         )
     }
 
-    return (
-        
-        <div className="slider">
+    return (<>
+        <div className="arrows">
+            <span className="arrows__left" onClick={scrollLeft}>{LeftArrow()}</span>
+            <span className="arrows__right" onClick={scrollRight}>{RightArrow()}</span>
+        </div>
+        <div className="slider" ref={sliderRow}>
             
             {state.beers && state.beers.map((element: IBeer, index: number) => {
                 return(
@@ -62,7 +80,7 @@ const Sweeper: React.FC = () => {
                 <h2>Load More</h2>
             </div>
         </div>
-    );
+    </>);
 }
 
 export default Sweeper;
